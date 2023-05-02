@@ -7,10 +7,9 @@ import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
 
 class RandomChar extends Component {
-  constructor(props) {
-    super(props);
-    this.updateChar();
-  }
+  // constructor(props) {
+  //   super(props);
+  // }
   state = {
     char: {},
     loading: true,
@@ -19,12 +18,26 @@ class RandomChar extends Component {
 
   marvelService = new MarvelService();
 
+  componentDidMount() {
+    this.updateChar();
+    // this.timerId = setInterval(this.updateChar, 3000);
+  }
+
+  componentWillUnmount() {
+    // clearInterval(this.timerId);
+  }
+
   onCharLoaded = (char) => {
     this.setState({ char, loading: false });
   };
 
   onError = () => {
     this.setState({ loading: false, error: true });
+  };
+
+  onclickLoad = () => {
+    this.setState({ loading: true });
+    this.updateChar();
   };
 
   updateChar = () => {
@@ -49,7 +62,7 @@ class RandomChar extends Component {
             Do you want to get to know him better?
           </p>
           <p className="randomchar__title">Or choose another one</p>
-          <button className="button button__main">
+          <button className="button button__main" onClick={this.onclickLoad}>
             <div className="inner">try it</div>
           </button>
           <img src={mjolnir} alt="mjolnir" className="randomchar__decoration" />
@@ -61,6 +74,11 @@ class RandomChar extends Component {
 
 const View = ({ char }) => {
   const { name, description, thumbnail, homepage, wiki } = char;
+  console.log(thumbnail);
+  if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
+    // const fitStyle = {{objectFit: 'contain'}}
+    console.log('ok');
+  }
   return (
     <div className="randomchar__block">
       <img src={thumbnail} alt="Random character" className="randomchar__img" />
