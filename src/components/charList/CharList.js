@@ -35,7 +35,7 @@ class CharList extends Component {
   // чтобы не помещать такую конструкцию в метод render
   renderItems(arr) {
     const items = arr.map((item) => {
-      console.log(item);
+      // console.log(item);
       let imgStyle = { objectFit: 'cover' };
       if (
         item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'

@@ -32,6 +32,7 @@ class MarvelService {
       homepage: data.urls[0].url,
       wiki: data.urls[1].url,
       id: data.id,
+      comics: data.comics.items,
     };
   };
 }
