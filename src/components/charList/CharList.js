@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import PropTypes from 'prop-types';
 import Spinner from '../spinner/Spinner';
 import ErrorMessage from '../errorMessage/ErrorMessage';
 import MarvelService from '../../services/MarvelService';
@@ -11,6 +12,7 @@ class CharList extends Component {
     error: false,
     newItemLoading: false,
     offset: 210,
+    charEnded: false,
   };
 
   marvelService = new MarvelService();
@@ -21,7 +23,10 @@ class CharList extends Component {
 
   onRequest = (offset) => {
     this.onCharListLoading();
-    this.marvelService.getAllCharacters(offset).then(this.onCharListLoaded).catch(this.onError);
+    this.marvelService
+      .getAllCharacters(offset)
+      .then(this.onCharListLoaded)
+      .catch(this.onError); /* arg here */
   };
 
   onCharListLoading = () => {
@@ -30,12 +35,18 @@ class CharList extends Component {
     });
   };
 
+  /* arg where */
   onCharListLoaded = (newcharList) => {
+    let ended = false;
+    if (newcharList.length < 9) {
+      ended = true;
+    }
     this.setState(({ offset, charList }) => ({
-      charList: [...charList, ...newcharList],
+      charList: [...charList, ...newcharList] /* at first charList empty */,
       loading: false,
       newItemLoading: false,
       offset: offset + 9,
+      charEnded: ended,
     }));
   };
 
@@ -70,7 +81,7 @@ class CharList extends Component {
   }
 
   render() {
-    const { newItemLoading, charList, loading, error, offset } = this.state;
+    const { newItemLoading, charList, loading, error, offset, charEnded } = this.state;
 
     const items = this.renderItems(charList);
 
@@ -86,6 +97,7 @@ class CharList extends Component {
         <button
           className="button button__main button__long"
           disabled={newItemLoading}
+          style={{ display: charEnded ? 'none' : 'block' }}
           onClick={() => this.onRequest(offset)}
         >
           <div className="inner">load more</div>
@@ -94,5 +106,9 @@ class CharList extends Component {
     );
   }
 }
+
+CharList.propTypes = {
+  onCharSelected: PropTypes.func.isRequired,
+};
 
 export default CharList;
