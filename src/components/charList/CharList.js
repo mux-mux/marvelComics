@@ -72,7 +72,7 @@ class CharList extends Component {
 
   renderItems(arr) {
     const items = arr.map((item, i) => {
-      // console.log(item);
+      console.log(item);
       let imgStyle = { objectFit: 'cover' };
       if (
         item.thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg'
@@ -83,7 +83,7 @@ class CharList extends Component {
       return (
         <li
           className="char__item"
-          tabIndex={0}
+          tabIndex={i}
           ref={this.setRef}
           key={item.id}
           onClick={() => {
