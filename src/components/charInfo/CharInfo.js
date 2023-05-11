@@ -106,8 +106,4 @@ const View = ({ char }) => {
   );
 };
 
-CharInfo.propTypes = {
-  charId: PropTypes.string,
-};
-
 export default CharInfo;
