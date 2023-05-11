@@ -60,7 +60,7 @@ class CharList extends Component {
   itemRefs = [];
 
   setRef = (ref) => {
-    console.log(ref);
+    // console.log(ref);
     this.itemRefs.push(ref);
   };
 
@@ -71,7 +71,7 @@ class CharList extends Component {
   };
 
   renderItems(arr) {
-    console.log(arr);
+    // console.log(arr);
     const items = arr.map((item, i) => {
       let imgStyle = { objectFit: 'cover' };
       if (
