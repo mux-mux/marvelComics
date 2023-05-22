@@ -58,6 +58,35 @@
   &__decoration {
     position: absolute;
     bottom: 14px;
-    right: -37px;
+    right: 0;
+  }
+}
+@media screen and (max-width: $xl) {
+  .randomchar {
+    grid-template-columns: 70%;
+    justify-content: center;
+  }
+}
+@media screen and (max-width: $md) {
+  .randomchar {
+    grid-template-columns: 90%;
+  }
+}
+@media screen and (max-width: $sm) {
+  .randomchar {
+    grid-template-columns: 100%;
+    &__decoration {
+      display: none;
+    }
+    &__btns {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+      justify-content: end;
+    }
+    &__descr {
+      visibility: hidden;
+    }
   }
 }

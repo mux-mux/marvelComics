@@ -60,7 +60,7 @@ class CharList extends Component {
   itemRefs = [];
 
   setRef = (ref) => {
-    // console.log(ref);
+    console.log(ref);
     this.itemRefs.push(ref);
   };
 
