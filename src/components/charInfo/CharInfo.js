@@ -69,7 +69,7 @@ class CharInfo extends Component {
 }
 
 const View = ({ char }) => {
-  const { name, description, thumbnail, homepage, wiki, comics } = char;
+  const { name, description, thumbnail, comiclink, comics } = char;
   let imgStyle = { objectFit: 'cover' };
   if (thumbnail === 'http://i.annihil.us/u/prod/marvel/i/mg/b/40/image_not_available.jpg') {
     imgStyle = { objectFit: 'unset' };
@@ -81,11 +81,8 @@ const View = ({ char }) => {
         <div>
           <div className="char__info-name">{name}</div>
           <div className="char__btns">
-            <a href={homepage} className="button button__main">
-              <div className="inner">homepage</div>
-            </a>
-            <a href={wiki} className="button button__secondary">
-              <div className="inner">Wiki</div>
+            <a href={comiclink} className="button button__main">
+              <div className="inner">Comics</div>
             </a>
           </div>
         </div>

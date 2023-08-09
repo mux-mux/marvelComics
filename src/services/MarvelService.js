@@ -30,8 +30,7 @@ class MarvelService {
       name: data.name,
       description: descr,
       thumbnail: data.thumbnail.path + '.' + data.thumbnail.extension,
-      homepage: data.urls[0].url,
-      wiki: data.urls[1].url,
+      comiclink: data.urls[data.urls.findIndex((element) => element.type === 'comiclink')].url,
       id: data.id,
       comics: data.comics.items,
     };
