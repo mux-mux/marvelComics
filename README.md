@@ -26,7 +26,7 @@
 ## Folder structure :open_file_folder:
 
 <div align="center">
-  <img src="https://jsgo.pro/media/structure/marvelcomics_folder_structure.jpg" alt="Marvel Comics Project Folder structure" width="100%" />
+  <img src="https://jsgo.pro/media/structure/marvelcomics_project_structure.png" alt="Marvel Comics Project Folder structure" width="100%" />
   <br>
 </div>
 
